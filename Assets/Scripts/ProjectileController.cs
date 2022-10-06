@@ -13,7 +13,7 @@ public class ProjectileController : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(this.velocity * Time.deltaTime);
+        transform.Translate(this.velocity * Time.deltaTime * 10);
     }
 
     private void OnTriggerEnter(Collider col)
@@ -34,5 +34,10 @@ public class ProjectileController : MonoBehaviour
             // Destroy self.
             Destroy(gameObject);
         }
+    }
+
+    public void Initialize(Vector3 aimDirection){
+        this.velocity = aimDirection;
+        //col.gameObject.tag;
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem deathEffect;
+    [SerializeField] ProjectileController projectilePrefab;
     
     private MeshRenderer _renderer;
 
@@ -28,5 +29,11 @@ public class EnemyController : MonoBehaviour
     {
         var particles = Instantiate(this.deathEffect);
         particles.transform.position = transform.position;
+    }
+
+    public void Update(){
+        var projectile = Instantiate(projectilePrefab);
+        projectile.transform.position = transform.position;
+        projectile.Initialize(Vector3.back);
     }
 }
